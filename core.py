@@ -37,11 +37,13 @@ class PdfReport():
         p.stdin.close()
         p.communicate()
 
-    def http_response(self):
+    def http_response(self, delete=True):
         """
         Use this method when you want to return a http response through django
         """
         response = self.response(open(self.output_filename, "rb"))
+        if delete:
+            os.remove(self.output_filename)
         response["Content-Type"] = "application/pdf"
         user_filename = os.path.splitext(
             os.path.basename(self.template.filename))[0]
