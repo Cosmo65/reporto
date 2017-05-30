@@ -37,7 +37,7 @@ class PdfReport():
         p.stdin.close()
         p.communicate()
 
-    def http_response(self, delete=True, output_filename=None):
+    def http_response(self, output_filename=None, delete=True):
         """
         Use this method if you want to return a http response through django
         """
